@@ -1,6 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingBasket, faTags } from '@fortawesome/free-solid-svg-icons';
 
+const NAV_LINKS = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
+  { href: '/login', label: 'Login' },
+];
+
 export default function Header() {
   return (
     <header className='header'>
@@ -11,28 +18,15 @@ export default function Header() {
         </a>
         <nav className='nav'>
           <ul>
+            {NAV_LINKS.map(({ href, label }) => (
+              <li key={href}>
+                <a href={href} className='nav-link'>
+                  {label}
+                </a>
+              </li>
+            ))}
             <li>
-              <a href='/' className='nav-link'>
-                Home
-              </a>
-            </li>
-            <li>
-              <a href='/about' className='nav-link'>
-                About
-              </a>
-            </li>
-            <li>
-              <a href='/contact' className='nav-link'>
-                Contact
-              </a>
-            </li>
-            <li>
-              <a href='/login' className='nav-link'>
-                Login
-              </a>
-            </li>
-            <li>
-              <a href='/cart' className='nav-link'>
+              <a href='/cart' className='nav-link' aria-label='Cart'>
                 <FontAwesomeIcon icon={faShoppingBasket} />
               </a>
             </li>
